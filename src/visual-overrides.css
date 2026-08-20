@@ -1,62 +1,23 @@
-/* --- Premium interaction and typography refinement --- */
-:root{--hero-shadow:0 45px 110px rgba(16,42,67,.18)}
-.wordmark span{font-size:32px!important;letter-spacing:-.08em!important}.wordmark small{font-size:9.5px!important;line-height:1.25!important;letter-spacing:.12em!important}.desktop-nav a{font-size:13px!important}.header-cta{font-size:13px!important}.site-header{z-index:200}
-.hero-visual{z-index:20!important;isolation:isolate}.hero-frame{min-height:520px;box-shadow:var(--hero-shadow);border:1px solid rgba(16,42,67,.12)}.hero-frame img{opacity:1!important;visibility:visible!important;object-fit:cover!important;transform:none!important}.hero-visual:before{content:"";position:absolute;width:110%;height:110%;left:-5%;top:-4%;border:1px solid rgba(192,124,69,.24);border-radius:210px 210px 20px 20px;z-index:-1;transform:rotate(2.5deg)}
-.scroll-narrative{min-height:600vh!important;perspective:1600px;perspective-origin:50% 38%;transform-style:preserve-3d}.paper-sheet{width:min(1180px,84vw)!important;height:76vh!important;top:11vh!important;border:1px solid rgba(16,42,67,.18)!important;box-shadow:0 45px 110px rgba(16,42,67,.18),0 2px 0 rgba(255,255,255,.9) inset!important;background:linear-gradient(rgba(16,42,67,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(16,42,67,.025) 1px,transparent 1px),var(--paper)!important;background-size:28px 28px!important;transform-style:preserve-3d!important;backface-visibility:hidden}.paper-sheet:after{inset:28px!important;border:1px solid rgba(16,42,67,.09)!important}.paper-sheet:before{position:absolute;right:42px;bottom:34px;color:rgba(16,42,67,.22);font:500 10px/1.5 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}.sheet-1:before{content:"CS / PROFESSIONAL DEVELOPMENT / 01"}.sheet-2:before{content:"VISION / PROFESSIONAL COMMUNITY / 02"}.sheet-3:before{content:"COMMITMENTS / TEN PRIORITIES / 03"}.sheet-4:before{content:"CONNECTION / ENGAGEMENT / 04"}.file-tab{padding:12px 20px!important;font-size:10px!important;box-shadow:0 8px 20px rgba(16,42,67,.14)}.sheet-1{z-index:3!important}.sheet-2{z-index:4!important}.sheet-3{z-index:5!important}.sheet-4{z-index:6!important}
-.depth-layer{mix-blend-mode:multiply}.depth-1{background:radial-gradient(ellipse at 72% 30%,rgba(192,124,69,.13),transparent 54%)!important}.depth-2{background:radial-gradient(ellipse at 25% 65%,rgba(29,92,122,.10),transparent 52%)!important}.depth-3{background:radial-gradient(ellipse at 55% 50%,rgba(16,42,67,.08),transparent 48%)!important}.network-wrapper{z-index:7!important}.network-canvas{filter:contrast(1.08)}
-.layer-perspective,.layer-vision,.layer-commitments,.layer-connection{text-shadow:0 1px 0 rgba(255,255,255,.45)}.layer-perspective h2,.layer-vision h2,.layer-commitments h2,.layer-connection h2{max-width:900px}.node-title{font-size:clamp(22px,2.5vw,36px)!important}
-.site-footer{padding:90px 0 30px!important}.footer-top>p{font-size:15px!important;line-height:1.75!important}.footer-links{font-size:14px!important;gap:15px!important}.footer-bottom{font-size:11px!important;line-height:1.5!important}.footer-bottom span{color:#aeb9c0!important}
-p{font-size:16px}.intro-copy,.hero-description{font-size:17px!important}.contact-row strong{font-size:16px!important}
+/* --- FINAL CS FILE LAYER FIX --- */
+.paper-sheet{z-index:9!important;pointer-events:none!important;overflow:hidden!important}
+.network-wrapper{z-index:7!important}
+.layer{z-index:12!important;pointer-events:none!important}.layer a{pointer-events:auto!important}.layer-identity{z-index:20!important}.layer-perspective,.layer-vision,.layer-commitments,.layer-connection{z-index:12!important}
 
-/* --- True scroll-driven 3D CS file sequence --- */
-@supports (animation-timeline: scroll()){
-  .scroll-narrative{scroll-timeline-name:none}
-  .paper-sheet{animation-duration:1ms;animation-fill-mode:both;animation-timing-function:linear;animation-timeline:scroll(root block);animation-range:0 600vh;will-change:transform,opacity}
-  .sheet-1{animation-name:cs-file-1}
-  .sheet-2{animation-name:cs-file-2}
-  .sheet-3{animation-name:cs-file-3}
-  .sheet-4{animation-name:cs-file-4}
-  .sheet-1 .file-tab:after{content:' / PROFILE';font-weight:400;opacity:.8}
-  .sheet-2 .file-tab:after{content:' / VISION';font-weight:400;opacity:.8}
-  .sheet-3 .file-tab:after{content:' / PRIORITIES';font-weight:400;opacity:.8}
-  .sheet-4 .file-tab:after{content:' / CONNECT';font-weight:400;opacity:.8}
-  @keyframes cs-file-1{
-    0%{opacity:1;transform:translate3d(-50%,0,0) rotateX(0) rotateZ(-1deg) scale(1)}
-    18%{opacity:1;transform:translate3d(-50%,-2vh,80px) rotateX(1deg) rotateZ(-2deg) scale(1.01)}
-    34%{opacity:.92;transform:translate3d(calc(-50% - 12vw),-12vh,-180px) rotateX(7deg) rotateZ(-6deg) scale(.94)}
-    52%{opacity:.45;transform:translate3d(calc(-50% - 30vw),-34vh,-650px) rotateX(16deg) rotateZ(-12deg) scale(.76)}
-    70%,100%{opacity:0;transform:translate3d(calc(-50% - 48vw),-62vh,-1100px) rotateX(24deg) rotateZ(-18deg) scale(.56)}
-  }
-  @keyframes cs-file-2{
-    0%,14%{opacity:0;transform:translate3d(calc(-50% + 12vw),22vh,-800px) rotateX(-18deg) rotateZ(8deg) scale(.62)}
-    28%{opacity:.95;transform:translate3d(calc(-50% + 8vw),10vh,-120px) rotateX(-5deg) rotateZ(4deg) scale(.91)}
-    45%{opacity:1;transform:translate3d(-50%,0,120px) rotateX(0) rotateZ(2deg) scale(1.01)}
-    60%{opacity:.92;transform:translate3d(calc(-50% + 14vw),-13vh,-260px) rotateX(8deg) rotateZ(6deg) scale(.9)}
-    78%,100%{opacity:0;transform:translate3d(calc(-50% + 48vw),-55vh,-1050px) rotateX(20deg) rotateZ(15deg) scale(.58)}
-  }
-  @keyframes cs-file-3{
-    0%,28%{opacity:0;transform:translate3d(calc(-50% - 15vw),28vh,-1000px) rotateX(20deg) rotateZ(-9deg) scale(.55)}
-    42%{opacity:.8;transform:translate3d(calc(-50% - 6vw),8vh,-180px) rotateX(6deg) rotateZ(-4deg) scale(.9)}
-    58%{opacity:1;transform:translate3d(-50%,0,150px) rotateX(0) rotateZ(-1deg) scale(1)}
-    74%{opacity:.96;transform:translate3d(calc(-50% - 10vw),-9vh,-180px) rotateX(8deg) rotateZ(-5deg) scale(.91)}
-    90%,100%{opacity:0;transform:translate3d(calc(-50% - 42vw),-50vh,-1000px) rotateX(22deg) rotateZ(-13deg) scale(.6)}
-  }
-  @keyframes cs-file-4{
-    0%,45%{opacity:0;transform:translate3d(calc(-50% + 18vw),30vh,-1100px) rotateX(-22deg) rotateZ(12deg) scale(.55)}
-    58%{opacity:.75;transform:translate3d(calc(-50% + 7vw),8vh,-160px) rotateX(-6deg) rotateZ(5deg) scale(.9)}
-    72%{opacity:1;transform:translate3d(-50%,0,180px) rotateX(0) rotateZ(1deg) scale(1)}
-    86%{opacity:.95;transform:translate3d(calc(-50% + 8vw),-10vh,-140px) rotateX(6deg) rotateZ(4deg) scale(.92)}
-    100%{opacity:.85;transform:translate3d(-50%,-18vh,-260px) rotateX(9deg) rotateZ(2deg) scale(.9)}
-  }
+/* Make every physical page look like a real CS working file, not an empty dialog. */
+.paper-sheet:after{inset:46px!important;border:0!important;box-shadow:none!important;display:block!important;white-space:pre-line!important;color:rgba(16,42,67,.22)!important;font:500 10px/1.8 'DM Mono',monospace!important;letter-spacing:.1em!important;text-transform:uppercase!important}
+.sheet-1:after{content:"CS ARISANKALA MANISH KUMAR\A COMPANY SECRETARY\A\A PROFESSIONAL FILE  /  01\A Professional Development & Practice Excellence\A Student Success & Career Readiness\A Employment & Training Opportunities\A\A INTERNAL PROFESSIONAL WORKING DOCUMENT"!important}
+.sheet-2:after{content:"CS ARISANKALA MANISH KUMAR\A\A VISION FILE  /  02\A A stronger, more capable and future-ready professional community\A\A STUDENTS  •  MEMBERS  •  INSTITUTIONS  •  OPPORTUNITY\A\A ACCESSIBLE  /  PRACTICAL  /  CONNECTED"!important}
+.sheet-3:after{content:"CS ARISANKALA MANISH KUMAR\A\A COMMITMENT FILE  /  03\A 01  PROFESSIONAL DEVELOPMENT\A 02  STUDENT SUCCESS\A 03  EMPLOYMENT & TRAINING\A 04  COMMUNICATION & LEADERSHIP\A 05  DIGITAL & AI CAPABILITIES\A\A TEN PRIORITIES  /  ONE PROFESSIONAL VISION"!important}
+.sheet-4:after{content:"CS ARISANKALA MANISH KUMAR\A\A CONNECTION FILE  /  04\A CORPORATE  •  INDUSTRIAL  •  GOVERNMENT\A INSTITUTIONS  •  MEMBERS  •  STUDENTS\A\A ENGAGEMENT  /  REPRESENTATION  /  WELFARE\A\A CONNECT THE PROFESSION TO OPPORTUNITY"!important}
+
+/* Strong physical depth: the pages travel out of the stack rather than simply fading. */
+@supports (animation-timeline:scroll()){
+.paper-sheet{animation-duration:1ms!important;animation-fill-mode:both!important;animation-timing-function:linear!important;animation-timeline:scroll(root block)!important;animation-range:0 600vh!important;will-change:transform,opacity!important}
+.sheet-1{animation-name:cs-file-lift-1!important}.sheet-2{animation-name:cs-file-lift-2!important}.sheet-3{animation-name:cs-file-lift-3!important}.sheet-4{animation-name:cs-file-lift-4!important}
+@keyframes cs-file-lift-1{0%{opacity:1;transform:translate3d(-50%,0,0) rotateX(0) rotateZ(-1deg) scale(1)}18%{opacity:1;transform:translate3d(-50%,-3vh,160px) rotateX(2deg) rotateZ(-2deg) scale(1.01)}38%{opacity:.95;transform:translate3d(calc(-50% - 18vw),-15vh,-240px) rotateX(9deg) rotateZ(-7deg) scale(.92)}58%{opacity:.2;transform:translate3d(calc(-50% - 42vw),-38vh,-850px) rotateX(18deg) rotateZ(-14deg) scale(.68)}100%{opacity:0;transform:translate3d(calc(-50% - 70vw),-70vh,-1400px) rotateX(28deg) rotateZ(-20deg) scale(.45)}}
+@keyframes cs-file-lift-2{0%,18%{opacity:0;transform:translate3d(calc(-50% + 20vw),25vh,-1000px) rotateX(-20deg) rotateZ(9deg) scale(.58)}35%{opacity:.9;transform:translate3d(calc(-50% + 9vw),9vh,-120px) rotateX(-5deg) rotateZ(4deg) scale(.9)}50%{opacity:1;transform:translate3d(-50%,0,180px) rotateX(0) rotateZ(1deg) scale(1)}67%{opacity:.8;transform:translate3d(calc(-50% + 18vw),-16vh,-320px) rotateX(10deg) rotateZ(7deg) scale(.88)}100%{opacity:0;transform:translate3d(calc(-50% + 70vw),-70vh,-1400px) rotateX(27deg) rotateZ(19deg) scale(.46)}}
+@keyframes cs-file-lift-3{0%,32%{opacity:0;transform:translate3d(calc(-50% - 20vw),28vh,-1100px) rotateX(20deg) rotateZ(-10deg) scale(.55)}46%{opacity:.9;transform:translate3d(calc(-50% - 7vw),8vh,-120px) rotateX(5deg) rotateZ(-4deg) scale(.9)}61%{opacity:1;transform:translate3d(-50%,0,220px) rotateX(0) rotateZ(-1deg) scale(1)}78%{opacity:.85;transform:translate3d(calc(-50% - 16vw),-14vh,-350px) rotateX(11deg) rotateZ(-7deg) scale(.87)}100%{opacity:0;transform:translate3d(calc(-50% - 70vw),-68vh,-1400px) rotateX(28deg) rotateZ(-19deg) scale(.45)}}
+@keyframes cs-file-lift-4{0%,47%{opacity:0;transform:translate3d(calc(-50% + 22vw),30vh,-1200px) rotateX(-22deg) rotateZ(11deg) scale(.54)}60%{opacity:.9;transform:translate3d(calc(-50% + 8vw),8vh,-130px) rotateX(-6deg) rotateZ(5deg) scale(.9)}75%{opacity:1;transform:translate3d(-50%,0,240px) rotateX(0) rotateZ(1deg) scale(1)}88%{opacity:.9;transform:translate3d(calc(-50% + 12vw),-12vh,-300px) rotateX(9deg) rotateZ(5deg) scale(.88)}100%{opacity:.75;transform:translate3d(-50%,-20vh,-420px) rotateX(12deg) rotateZ(2deg) scale(.84)}}
 }
 
-/* Make the file stack unmistakable even before the first scroll tick. */
-.paper-sheet{outline:1px solid rgba(16,42,67,.035)}
-.paper-sheet .file-tab{letter-spacing:.14em}
-
-@media(prefers-reduced-motion:reduce){.paper-sheet,.layer,.hero-visual,.hero-copy{transition:none!important;animation:none!important}}
-@media(max-width:800px){.wordmark span{font-size:27px!important}.wordmark small{font-size:8px!important}.scroll-narrative{min-height:520vh!important}.paper-sheet{width:92vw!important;height:68vh!important;top:13vh!important}.hero-frame{min-height:420px}.hero-visual:before{border-radius:145px 145px 18px 18px}.footer-top>p{font-size:14px!important}.footer-links{font-size:14px!important}.footer-bottom{font-size:10px!important}
-  @supports (animation-timeline: scroll()){
-    .paper-sheet{animation-range:0 520vh}
-  }
-}
+@media(max-width:800px){.paper-sheet{z-index:9!important;width:92vw!important;height:64vh!important}.layer-identity{z-index:20!important}.layer-perspective,.layer-vision,.layer-commitments,.layer-connection{z-index:12!important}}
