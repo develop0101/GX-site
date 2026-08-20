@@ -3,9 +3,9 @@
 .network-wrapper{z-index:4!important;pointer-events:none!important}
 .layer{z-index:12!important;pointer-events:none!important}.layer a{pointer-events:auto!important}.layer-identity{z-index:20!important}.layer-perspective,.layer-vision,.layer-commitments,.layer-connection{z-index:12!important}
 
-/* The 600vh scroll stage is the spacer for the pinned 3D scene. Normal homepage content starts after it. */
-.scroll-narrative{min-height:0!important;height:auto!important;position:relative!important;overflow:visible!important}
-.post-narrative{position:relative!important;z-index:30!important;margin-top:600vh!important;background:var(--cream)!important;isolation:isolate!important}
+/* Exact 600vh pinned-scene stage. The normal homepage begins immediately after the stage. */
+.scroll-narrative{min-height:600vh!important;height:600vh!important;position:relative!important;overflow:visible!important}
+.post-narrative{position:absolute!important;left:0!important;right:0!important;top:600vh!important;margin:0!important;z-index:30!important;background:var(--cream)!important;isolation:isolate!important}
 
 /* Keep the CS files tucked away at page load; they enter only after scrolling begins. */
 .sheet-1{opacity:clamp(0,calc((var(--p) - .025)*12),1)!important}
@@ -23,4 +23,4 @@
 /* Readable brand/header/footer hierarchy. */
 .wordmark span{font-size:34px!important}.wordmark small{font-size:9.5px!important}.desktop-nav a,.header-cta{font-size:13px!important}.site-footer{padding:90px 0 32px!important}.footer-top>p{font-size:15px!important;line-height:1.75!important}.footer-links{font-size:14px!important}.footer-bottom{font-size:11px!important;line-height:1.5!important}
 
-@media(max-width:800px){.post-narrative{margin-top:520vh!important}.paper-sheet{width:90vw!important;height:66vh!important;top:16vh!important}.hero-copy h1{font-size:clamp(48px,12vw,72px)!important;max-width:100%!important}.hero-frame{min-height:420px!important}}
+@media(max-width:800px){.scroll-narrative{min-height:520vh!important;height:520vh!important}.post-narrative{top:520vh!important}.paper-sheet{width:90vw!important;height:66vh!important;top:16vh!important}.hero-copy h1{font-size:clamp(48px,12vw,72px)!important;max-width:100%!important}.hero-frame{min-height:420px!important}}
