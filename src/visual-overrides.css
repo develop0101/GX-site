@@ -1,23 +1,26 @@
-/* --- FINAL CS FILE LAYER FIX --- */
-.paper-sheet{z-index:9!important;pointer-events:none!important;overflow:hidden!important}
-.network-wrapper{z-index:7!important}
+/* FINAL HOMEPAGE COMPOSITION FIX — CS FILE SCROLL */
+.paper-sheet{z-index:2!important;pointer-events:none!important;overflow:hidden!important;transform-style:preserve-3d!important;backface-visibility:hidden!important}
+.network-wrapper{z-index:4!important;pointer-events:none!important}
 .layer{z-index:12!important;pointer-events:none!important}.layer a{pointer-events:auto!important}.layer-identity{z-index:20!important}.layer-perspective,.layer-vision,.layer-commitments,.layer-connection{z-index:12!important}
 
-/* Make every physical page look like a real CS working file, not an empty dialog. */
-.paper-sheet:after{inset:46px!important;border:0!important;box-shadow:none!important;display:block!important;white-space:pre-line!important;color:rgba(16,42,67,.22)!important;font:500 10px/1.8 'DM Mono',monospace!important;letter-spacing:.1em!important;text-transform:uppercase!important}
-.sheet-1:after{content:"CS ARISANKALA MANISH KUMAR\A COMPANY SECRETARY\A\A PROFESSIONAL FILE  /  01\A Professional Development & Practice Excellence\A Student Success & Career Readiness\A Employment & Training Opportunities\A\A INTERNAL PROFESSIONAL WORKING DOCUMENT"!important}
-.sheet-2:after{content:"CS ARISANKALA MANISH KUMAR\A\A VISION FILE  /  02\A A stronger, more capable and future-ready professional community\A\A STUDENTS  •  MEMBERS  •  INSTITUTIONS  •  OPPORTUNITY\A\A ACCESSIBLE  /  PRACTICAL  /  CONNECTED"!important}
-.sheet-3:after{content:"CS ARISANKALA MANISH KUMAR\A\A COMMITMENT FILE  /  03\A 01  PROFESSIONAL DEVELOPMENT\A 02  STUDENT SUCCESS\A 03  EMPLOYMENT & TRAINING\A 04  COMMUNICATION & LEADERSHIP\A 05  DIGITAL & AI CAPABILITIES\A\A TEN PRIORITIES  /  ONE PROFESSIONAL VISION"!important}
-.sheet-4:after{content:"CS ARISANKALA MANISH KUMAR\A\A CONNECTION FILE  /  04\A CORPORATE  •  INDUSTRIAL  •  GOVERNMENT\A INSTITUTIONS  •  MEMBERS  •  STUDENTS\A\A ENGAGEMENT  /  REPRESENTATION  /  WELFARE\A\A CONNECT THE PROFESSION TO OPPORTUNITY"!important}
+/* The 600vh scroll stage is the spacer for the pinned 3D scene. Normal homepage content starts after it. */
+.scroll-narrative{min-height:0!important;height:auto!important;position:relative!important;overflow:visible!important}
+.post-narrative{position:relative!important;z-index:30!important;margin-top:600vh!important;background:var(--cream)!important;isolation:isolate!important}
 
-/* Strong physical depth: the pages travel out of the stack rather than simply fading. */
-@supports (animation-timeline:scroll()){
-.paper-sheet{animation-duration:1ms!important;animation-fill-mode:both!important;animation-timing-function:linear!important;animation-timeline:scroll(root block)!important;animation-range:0 600vh!important;will-change:transform,opacity!important}
-.sheet-1{animation-name:cs-file-lift-1!important}.sheet-2{animation-name:cs-file-lift-2!important}.sheet-3{animation-name:cs-file-lift-3!important}.sheet-4{animation-name:cs-file-lift-4!important}
-@keyframes cs-file-lift-1{0%{opacity:1;transform:translate3d(-50%,0,0) rotateX(0) rotateZ(-1deg) scale(1)}18%{opacity:1;transform:translate3d(-50%,-3vh,160px) rotateX(2deg) rotateZ(-2deg) scale(1.01)}38%{opacity:.95;transform:translate3d(calc(-50% - 18vw),-15vh,-240px) rotateX(9deg) rotateZ(-7deg) scale(.92)}58%{opacity:.2;transform:translate3d(calc(-50% - 42vw),-38vh,-850px) rotateX(18deg) rotateZ(-14deg) scale(.68)}100%{opacity:0;transform:translate3d(calc(-50% - 70vw),-70vh,-1400px) rotateX(28deg) rotateZ(-20deg) scale(.45)}}
-@keyframes cs-file-lift-2{0%,18%{opacity:0;transform:translate3d(calc(-50% + 20vw),25vh,-1000px) rotateX(-20deg) rotateZ(9deg) scale(.58)}35%{opacity:.9;transform:translate3d(calc(-50% + 9vw),9vh,-120px) rotateX(-5deg) rotateZ(4deg) scale(.9)}50%{opacity:1;transform:translate3d(-50%,0,180px) rotateX(0) rotateZ(1deg) scale(1)}67%{opacity:.8;transform:translate3d(calc(-50% + 18vw),-16vh,-320px) rotateX(10deg) rotateZ(7deg) scale(.88)}100%{opacity:0;transform:translate3d(calc(-50% + 70vw),-70vh,-1400px) rotateX(27deg) rotateZ(19deg) scale(.46)}}
-@keyframes cs-file-lift-3{0%,32%{opacity:0;transform:translate3d(calc(-50% - 20vw),28vh,-1100px) rotateX(20deg) rotateZ(-10deg) scale(.55)}46%{opacity:.9;transform:translate3d(calc(-50% - 7vw),8vh,-120px) rotateX(5deg) rotateZ(-4deg) scale(.9)}61%{opacity:1;transform:translate3d(-50%,0,220px) rotateX(0) rotateZ(-1deg) scale(1)}78%{opacity:.85;transform:translate3d(calc(-50% - 16vw),-14vh,-350px) rotateX(11deg) rotateZ(-7deg) scale(.87)}100%{opacity:0;transform:translate3d(calc(-50% - 70vw),-68vh,-1400px) rotateX(28deg) rotateZ(-19deg) scale(.45)}}
-@keyframes cs-file-lift-4{0%,47%{opacity:0;transform:translate3d(calc(-50% + 22vw),30vh,-1200px) rotateX(-22deg) rotateZ(11deg) scale(.54)}60%{opacity:.9;transform:translate3d(calc(-50% + 8vw),8vh,-130px) rotateX(-6deg) rotateZ(5deg) scale(.9)}75%{opacity:1;transform:translate3d(-50%,0,240px) rotateX(0) rotateZ(1deg) scale(1)}88%{opacity:.9;transform:translate3d(calc(-50% + 12vw),-12vh,-300px) rotateX(9deg) rotateZ(5deg) scale(.88)}100%{opacity:.75;transform:translate3d(-50%,-20vh,-420px) rotateX(12deg) rotateZ(2deg) scale(.84)}}
-}
+/* Keep the CS files tucked away at page load; they enter only after scrolling begins. */
+.sheet-1{opacity:clamp(0,calc((var(--p) - .025)*12),1)!important}
+.sheet-2{opacity:clamp(0,calc((var(--p) - .12)*7),1)!important}
+.sheet-3{opacity:clamp(0,calc((var(--p) - .28)*6),1)!important}
+.sheet-4{opacity:clamp(0,calc((var(--p) - .48)*5),1)!important}
 
-@media(max-width:800px){.paper-sheet{z-index:9!important;width:92vw!important;height:64vh!important}.layer-identity{z-index:20!important}.layer-perspective,.layer-vision,.layer-commitments,.layer-connection{z-index:12!important}}
+/* Keep the file surfaces refined rather than giant blank panels. */
+.paper-sheet{width:min(1120px,78vw)!important;height:70vh!important;top:15vh!important;box-shadow:0 35px 90px rgba(16,42,67,.16)!important}
+.paper-sheet:after{inset:24px!important}.file-tab{z-index:3!important}
+
+/* Hero remains clean and dominant before the file sequence begins. */
+.layer-identity{padding-top:88px!important}.hero-copy h1{font-size:clamp(58px,6vw,96px)!important;max-width:720px!important}.hero-description{max-width:500px!important;font-size:17px!important}.hero-visual{z-index:25!important}.hero-frame{min-height:520px!important}
+
+/* Readable brand/header/footer hierarchy. */
+.wordmark span{font-size:34px!important}.wordmark small{font-size:9.5px!important}.desktop-nav a,.header-cta{font-size:13px!important}.site-footer{padding:90px 0 32px!important}.footer-top>p{font-size:15px!important;line-height:1.75!important}.footer-links{font-size:14px!important}.footer-bottom{font-size:11px!important;line-height:1.5!important}
+
+@media(max-width:800px){.post-narrative{margin-top:520vh!important}.paper-sheet{width:90vw!important;height:66vh!important;top:16vh!important}.hero-copy h1{font-size:clamp(48px,12vw,72px)!important;max-width:100%!important}.hero-frame{min-height:420px!important}}
