@@ -1,0 +1,1 @@
+Candidate image is supplied separately from the source archive. The production image path is /images/CS_manish_website.png. Upload the original PNG to this folder before production deployment.
