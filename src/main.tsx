@@ -5,6 +5,7 @@ import Gallery from './Gallery.tsx';
 import './index.css';
 import './visual-overrides.css';
 import './gallery-overrides.css';
+import './route-cleanup';
 import './site-enhancements';
 
 const root = createRoot(document.getElementById('root')!);
