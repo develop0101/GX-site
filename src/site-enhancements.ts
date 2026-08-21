@@ -78,17 +78,18 @@ function fixImageAssets() {
 function addRecognitionStrip() {
   if (window.location.pathname !== '/' || document.querySelector('.home-recognition-strip')) return;
   const host = document.querySelector('.post-narrative');
-  const intro = host?.querySelector('.introduction');
-  if (!host || !intro) return;
+  if (!host) return;
   const section = document.createElement('section');
   section.className = 'home-recognition-strip';
-  const cards = [...recognitionItems, ...recognitionItems].map(([image,year,title],i) => `
+  const cards = [...recognitionItems, ...recognitionItems].map(([image,year,title]) => `
     <a class="home-recognition-card" href="/gallery" aria-label="View ${title}">
       <span class="home-recognition-image"><img src="${image}" alt="" loading="lazy"></span>
       <span class="home-recognition-copy"><small>${year}</small><strong>${title}</strong></span>
     </a>`).join('');
   section.innerHTML = `<div class="home-recognition-head"><span>Selected recognitions</span><small>Professional milestones & recognition</small></div><div class="home-recognition-window"><div class="home-recognition-track">${cards}</div></div>`;
-  intro.insertAdjacentElement('afterend', section);
+  // Keep recognitions completely separate from the MCA/corporate-affairs block.
+  // Place them at the very top of the post-hero content, immediately after the hero narrative.
+  host.insertBefore(section, host.firstElementChild || null);
 }
 
 function trimImageToContent(img: HTMLImageElement) {
@@ -162,7 +163,7 @@ function addLayoutFixes() {
     .connect-linkedin strong{display:block!important;font-size:14px!important}
     .connect-linkedin small{display:block!important;margin-top:3px!important;color:#6d7d8c!important;font-size:11px!important}
     .linkedin-arrow{font-size:18px!important}
-    .home-recognition-strip{background:#102a43!important;color:#fff!important;padding:25px 0 28px!important;overflow:hidden!important;border-top:1px solid rgba(255,255,255,.08)!important;border-bottom:1px solid rgba(255,255,255,.08)!important}
+    .home-recognition-strip{background:#102a43!important;color:#fff!important;padding:28px 0 30px!important;overflow:hidden!important;border-top:1px solid rgba(255,255,255,.08)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;position:relative!important;z-index:11!important}
     .home-recognition-head{width:min(1180px,calc(100% - 96px));margin:0 auto 15px;display:flex;justify-content:space-between;align-items:center;gap:20px}
     .home-recognition-head>span{font:700 10px 'DM Mono';letter-spacing:.16em;text-transform:uppercase;color:#e0a979}
     .home-recognition-head>small{font:10px 'DM Mono';letter-spacing:.06em;color:rgba(255,255,255,.5)}
@@ -171,7 +172,7 @@ function addLayoutFixes() {
     .home-recognition-track:hover{animation-play-state:paused}
     .home-recognition-card{width:255px;flex:0 0 255px;display:grid;grid-template-columns:78px 1fr;align-items:center;gap:12px;padding:9px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);color:#fff;text-align:left}
     .home-recognition-image{height:78px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:transparent}
-    .home-recognition-image img{width:100%;height:100%;object-fit:contain;mix-blend-mode:normal}
+    .home-recognition-image img{width:100%;height:100%;object-fit:contain;mix-blend-mode:darken}
     .home-recognition-copy small{display:block;color:#e0a979;font:9px 'DM Mono';letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
     .home-recognition-copy strong{display:block;font-size:12px;line-height:1.25;font-weight:650}
     @keyframes homeRecognition{from{transform:translateX(0)}to{transform:translateX(-50%)}}
