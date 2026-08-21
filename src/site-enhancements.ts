@@ -14,22 +14,44 @@ function addLinkedIn() {
   cta.parentElement?.insertBefore(link, cta);
 }
 
-function addAwardsLink() {
+function replaceNavigation() {
   const nav = document.querySelector('.desktop-nav');
-  if (!nav || nav.querySelector('.awards-nav-link')) return;
-  const link = document.createElement('a');
-  link.className = 'awards-nav-link';
-  link.href = '/awards';
-  link.textContent = 'Awards';
-  nav.insertBefore(link, nav.querySelector('a[href="/connect"]') || null);
+  if (!nav) return;
+  nav.querySelectorAll<HTMLAnchorElement>('a[href="/engagements"], a[href="/awards"]').forEach(a => a.remove());
+  if (!nav.querySelector('a[href="/gallery"]')) {
+    const link = document.createElement('a');
+    link.className = 'gallery-nav-link';
+    link.href = '/gallery';
+    link.textContent = 'Galleries';
+    nav.insertBefore(link, nav.querySelector('a[href="/connect"]') || null);
+  }
+  document.querySelectorAll<HTMLAnchorElement>('.mobile-nav a[href="/engagements"], .mobile-nav a[href="/awards"]').forEach(a => a.remove());
+  const mobile = document.querySelector('.mobile-nav');
+  if (mobile && !mobile.querySelector('a[href="/gallery"]')) {
+    const link = document.createElement('a');
+    link.href = '/gallery';
+    link.textContent = 'Galleries';
+    mobile.insertBefore(link, mobile.querySelector('a[href="/connect"]') || null);
+  }
+  document.querySelectorAll<HTMLAnchorElement>('.footer-links a[href="/engagements"]').forEach(a => {
+    a.href = '/gallery';
+    a.textContent = 'Galleries';
+  });
 }
 
 function fixImageAssets() {
   const hero = document.querySelector<HTMLImageElement>('.hero-frame img');
-  if (hero && (hero.src.endsWith('/CS_manish_website.png') || hero.naturalWidth === 0)) {
+  if (hero && (!hero.complete || hero.naturalWidth === 0 || hero.getAttribute('src')?.includes('CS_manish_website'))) {
     if (!hero.dataset.assetFixed) {
       hero.src = HERO_IMAGE;
       hero.dataset.assetFixed = 'true';
+    }
+  }
+  const about = document.querySelector<HTMLImageElement>('.about-image img');
+  if (about && (!about.complete || about.naturalWidth === 0 || about.getAttribute('src')?.includes('CS_manish_website'))) {
+    if (!about.dataset.assetFixed) {
+      about.src = HERO_IMAGE;
+      about.dataset.assetFixed = 'true';
     }
   }
   document.querySelectorAll<HTMLImageElement>('.award-media img, .award-lightbox img').forEach(img => {
@@ -46,13 +68,14 @@ function addLayoutFixes() {
     .header-inner{gap:18px!important}
     .linkedin-link{flex:0 0 auto!important;margin-right:8px!important;white-space:nowrap!important}
     .header-cta{flex:0 0 auto!important;white-space:nowrap!important}
-    .hero-footer{position:relative!important;z-index:4!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:28px!important;margin-top:-12px!important;padding-bottom:28px!important;min-height:52px!important}
+    .hero-footer{position:relative!important;z-index:4!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:28px!important;margin-top:0!important;padding-bottom:28px!important;min-height:52px!important}
     .hero-footer>span:first-child{max-width:72%!important;line-height:1.45!important}
     .hero-footer .scroll-hint{white-space:nowrap!important;display:inline-flex!important;align-items:center!important;gap:7px!important}
-    .hero-copy .arrow-link{position:relative!important;z-index:6!important;margin-bottom:18px!important}
+    .hero-copy .arrow-link{position:relative!important;z-index:6!important;margin-bottom:24px!important}
     .hero-grid{padding-bottom:0!important}
+    .layer-identity{padding-top:110px!important}
     @media(max-width:1000px){.linkedin-link{display:none!important}.header-inner{gap:12px!important}}
-    @media(max-width:700px){.hero-footer{display:none!important}}
+    @media(max-width:700px){.hero-footer{display:none!important}.layer-identity{padding-top:85px!important}}
   `;
   document.head.appendChild(style);
 }
@@ -78,7 +101,7 @@ function addMcaBlock() {
 
 function enhance() {
   addLinkedIn();
-  addAwardsLink();
+  replaceNavigation();
   addMcaBlock();
   addLayoutFixes();
   fixImageAssets();
