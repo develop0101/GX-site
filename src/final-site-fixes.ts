@@ -1,5 +1,6 @@
 const CANONICAL_ORIGIN = 'https://csmanishkumar.com';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/csamk/';
+const WHATSAPP_URL = 'https://wa.me/916291109642';
 
 function fixHeroEyebrow(){
   document.querySelectorAll('.hero-copy .eyebrow').forEach(el=>{
@@ -49,6 +50,26 @@ function normalizeUrls(){
   });
 }
 
+function addConnectWhatsApp(){
+  if(location.pathname!=='/connect') return;
+  if(document.querySelector('[data-whatsapp-connect]')) return;
+
+  const host=document.querySelector<HTMLElement>('.connect-page, .connect-grid, .contact-details, .contact-info') ||
+    [...document.querySelectorAll<HTMLElement>('main section')].find(el=>el.querySelector('a[href^="tel:"]')) ||
+    [...document.querySelectorAll<HTMLElement>('main section')].find(el=>el.querySelector('a[href^="mailto:"]'));
+  if(!host) return;
+
+  const link=document.createElement('a');
+  link.href=WHATSAPP_URL;
+  link.target='_blank';
+  link.rel='noopener noreferrer';
+  link.setAttribute('aria-label','Chat on WhatsApp');
+  link.setAttribute('data-whatsapp-connect','true');
+  link.style.cssText='display:inline-flex;align-items:center;gap:10px;margin-top:18px;text-decoration:none;font-weight:600;';
+  link.innerHTML='<span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;font-size:18px;">◉</span><span>Chat on WhatsApp</span>';
+  host.appendChild(link);
+}
+
 function fixCanonicalMeta(){
   let canonical=document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
   if(!canonical){
@@ -64,6 +85,7 @@ function applyFinalSiteFixes(){
   fixHeroEyebrow();
   removeUnnecessaryCTAs();
   normalizeUrls();
+  addConnectWhatsApp();
   fixCanonicalMeta();
 }
 
