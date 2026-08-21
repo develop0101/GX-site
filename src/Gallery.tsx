@@ -20,10 +20,21 @@ const galleryItems = [
 
 export default function Gallery(){
  const [active,setActive]=useState<number|null>(null);
+ const marqueeItems=[...galleryItems,...galleryItems];
  return <div className="gallery-page">
   <header className="gallery-header"><a href="/" className="gallery-brand"><b>CS</b><span>ARISANKALA<br/>MANISH KUMAR</span></a><nav><a href="/">Home</a><a href="/about">About</a><a href="/vision">Vision</a><a href="/commitments">Commitments</a><a className="active" href="/gallery">Galleries</a><a href="/connect">Connect</a></nav><a className="gallery-cta" href="/commitments">Explore Commitments <ArrowUpRight size={15}/></a></header>
   <main>
    <section className="gallery-hero"><div className="gallery-container"><p className="gallery-eyebrow">Professional life · Moments · Events</p><h1>A visual record of<br/><em>the journey.</em></h1><p>A growing collection of photographs from professional events, knowledge-sharing sessions, institutional engagements and moments of recognition.</p></div></section>
+
+   <section className="recognition-marquee" aria-label="Selected recognitions">
+    <div className="marquee-label"><span>Selected recognitions</span><small>Slowly moving · tap any image to view</small></div>
+    <div className="marquee-window"><div className="marquee-track">
+      {marqueeItems.map((item,i)=><button className="marquee-card" key={`${item.image}-${i}`} onClick={()=>setActive(i % galleryItems.length)} aria-label={`View ${item.title}`}>
+       <div className="marquee-image"><img src={item.image} alt=""/></div><div><small>{item.year}</small><strong>{item.title}</strong></div>
+      </button>)}
+    </div></div>
+   </section>
+
    <section className="gallery-moments"><div className="gallery-container"><div className="gallery-heading"><div><span>01 — MOMENTS & EVENTS</span><h2>Moments from<br/><em>the profession.</em></h2></div><p>Photographs are kept as individual moments rather than compressed into a single collage, so the people, setting and recognition remain visually distinct.</p></div><div className="gallery-grid">{galleryItems.map((item,i)=><article className="gallery-card" key={item.image} onClick={()=>setActive(i)}><div className="gallery-media"><img src={item.image} alt={item.title} loading="lazy"/><span>Open <ArrowUpRight size={14}/></span></div><div className="gallery-meta"><small>{item.year}</small><small>{String(i+1).padStart(2,'0')}</small></div><h3>{item.title}</h3><p>{item.caption}</p></article>)}</div></div></section>
    <section className="gallery-awards"><div className="gallery-container"><div className="gallery-awards-heading"><span>02 — INDIVIDUAL RECOGNITIONS</span><h2>The recognitions<br/><em>behind the photographs.</em></h2><p>Individual awards remain available here as a clean archive, while the main gallery keeps the focus on the wider professional journey.</p></div><div className="recognition-list">{galleryItems.map((item,i)=><button key={item.image} onClick={()=>setActive(i)}><span>{String(i+1).padStart(2,'0')}</span><strong>{item.title}</strong><small>{item.year}</small><ArrowUpRight size={16}/></button>)}</div></div></section>
   </main>
