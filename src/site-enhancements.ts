@@ -13,6 +13,16 @@ function addLinkedIn() {
   cta.parentElement?.insertBefore(link, cta);
 }
 
+function addAwardsLink() {
+  const nav = document.querySelector('.desktop-nav');
+  if (!nav || nav.querySelector('.awards-nav-link')) return;
+  const link = document.createElement('a');
+  link.className = 'awards-nav-link';
+  link.href = '/awards';
+  link.textContent = 'Awards';
+  nav.insertBefore(link, nav.querySelector('a[href="/connect"]') || null);
+}
+
 function addMcaBlock() {
   const host = document.querySelector('.post-narrative');
   if (!host || document.querySelector('.mca-source-block')) return;
@@ -34,6 +44,7 @@ function addMcaBlock() {
 
 function enhance() {
   addLinkedIn();
+  addAwardsLink();
   addMcaBlock();
 }
 
