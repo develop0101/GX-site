@@ -10,7 +10,6 @@ function fixHeroEyebrow(){
 }
 
 function removeUnnecessaryCTAs(){
-  // The header already contains the primary navigation; remove the duplicate CTA.
   document.querySelectorAll('.header-cta').forEach(el=>el.remove());
 }
 
@@ -23,29 +22,27 @@ function normalizeUrls(){
       const path=url.pathname;
       const text=(a.textContent||'').trim().toLowerCase();
 
-      // Retired sections now live under Galleries.
       if(path==='/engagements'||path==='/awards'){
-        a.href='/gallery';
+        if(a.getAttribute('href')!=='/gallery') a.href='/gallery';
         if(text==='engagements'||text==='awards') a.textContent='Galleries';
         return;
       }
 
-      // Replace old Vercel/deployment links with the canonical domain while preserving paths.
-      if(url.hostname.endsWith('.vercel.app') || url.hostname==='csmanishkumar.com'){
-        a.href=`${CANONICAL_ORIGIN}${path}${url.search}${url.hash}`;
+      if(url.hostname.endsWith('.vercel.app')){
+        const next=`${CANONICAL_ORIGIN}${path}${url.search}${url.hash}`;
+        if(a.href!==next) a.href=next;
       }
     }catch{}
   });
 
-  // Footer links are kept deliberately simple and point only to current site destinations.
   document.querySelectorAll<HTMLElement>('footer a').forEach(a=>{
     const text=(a.textContent||'').trim().toLowerCase();
     if(text==='engagements'||text==='awards'){
       a.textContent='Galleries';
-      a.href='/gallery';
+      if(a.getAttribute('href')!=='/gallery') a.href='/gallery';
     }
     if(text.includes('linkedin')){
-      a.href=LINKEDIN_URL;
+      if(a.href!==LINKEDIN_URL) a.href=LINKEDIN_URL;
       a.target='_blank';
       a.rel='noopener noreferrer';
     }
@@ -59,7 +56,8 @@ function fixCanonicalMeta(){
     canonical.rel='canonical';
     document.head.appendChild(canonical);
   }
-  canonical.href=`${CANONICAL_ORIGIN}${location.pathname}`;
+  const next=`${CANONICAL_ORIGIN}${location.pathname}`;
+  if(canonical.href!==next) canonical.href=next;
 }
 
 function applyFinalSiteFixes(){
@@ -69,7 +67,8 @@ function applyFinalSiteFixes(){
   fixCanonicalMeta();
 }
 
-document.addEventListener('DOMContentLoaded',applyFinalSiteFixes);
-const finalFixObserver=new MutationObserver(applyFinalSiteFixes);
-finalFixObserver.observe(document.documentElement,{childList:true,subtree:true});
-setTimeout(()=>finalFixObserver.disconnect(),12000);
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',applyFinalSiteFixes,{once:true});
+}else{
+  applyFinalSiteFixes();
+}
