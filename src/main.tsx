@@ -8,6 +8,7 @@ import './gallery-overrides.css';
 import './route-cleanup';
 import './site-enhancements';
 import './final-site-fixes';
+import './whatsapp-widget';
 
 const root = createRoot(document.getElementById('root')!);
 const isGallery = window.location.pathname === '/gallery' || window.location.pathname === '/awards';
