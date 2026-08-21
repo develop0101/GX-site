@@ -2,20 +2,20 @@ import { useState } from 'react';
 import { ArrowUpRight, X } from 'lucide-react';
 
 const awards = [
-  { image:'/images/awards/award-01-tongue-twister-judge.png', year:'2025', title:'Hon. Judge — Tongue Twister Competition', org:'Hooghly Chapter of EIRC of ICSI · Mega Student Carnival' },
-  { image:'/images/awards/award-02-pcs-day.png', year:'2025', title:'PCS Day Recognition', org:'Hosted by EIRC of ICSI' },
-  { image:'/images/awards/award-03-mega-student-conference.png', year:'2023', title:"Mega Student's Conference", org:'ICSI · Presented to CS Arisankala Manish Kumar' },
-  { image:'/images/awards/award-04-hooghly-chapter.png', year:'Professional engagement', title:'Hooghly Chapter Recognition', org:'ICSI · Hooghly Chapter' },
-  { image:'/images/awards/award-05-posh-session.png', year:'2026', title:'Professional Knowledge Session', org:'Madhya Kolkata Study Circle for Members of ICSI-EIRC · POSH' },
-  { image:'/images/awards/award-06-adapting-mca-v3.png', year:'2025', title:'Adapting to MCA V3', org:'ICMAI Howrah Chapter · ROC Transition & Compliance Challenges' },
-  { image:'/images/awards/award-07-gst-input-tax-credit.png', year:'2026', title:'Input Tax Credit under GST', org:'ICMAI Howrah Chapter · Eligibility, Restrictions, Reversal & Judicial Trends' },
-  { image:'/images/awards/award-08-gst-rate-cuts.png', year:'2025', title:'Impact of GST Rate Cuts', org:'ICMAI Howrah Chapter · Insights from the 56th GST Council Meeting' },
-  { image:'/images/awards/award-09-mca-v3-solutions.png', year:'Professional engagement', title:'MCA-V3 Portal: Common Errors & Practical Solutions', org:'ICMAI Howrah Chapter' },
-  { image:'/images/awards/award-10-hooghly-chapter-gratitude.png', year:'2024', title:'Knowledge-Sharing Recognition', org:'Hooghly Chapter of ICSI · Full Day Seminar' },
-  { image:'/images/awards/award-11-bhawanipur-education-appreciation.png', year:'Professional engagement', title:'Appreciation for Support in Education', org:'The Bhawanipur Education Society College' },
-  { image:'/images/awards/award-12-moot-court-competition.png', year:'2026', title:'24th All India Moot Court Competition', org:'Chapter Level — Kolkata · ICSI-EIRC, CCGR&T Kolkata Campus' },
-  { image:'/images/awards/award-13-regional-conference.png', year:'2017', title:'9th Regional Conference of Student Company Secretaries', org:'ICSI-EIRC jointly with Hooghly Chapter · Synergy — Unleash Your Potential' },
-  { image:'/images/awards/award-14-3rd-best-participant.png', year:'2016', title:'3rd Best Participant — 112th MSOP', org:'ICSI-EIRC · Management Skills Orientation Programme · Kolkata' },
+  { image:'/images/award-01-tongue-twister-judge.png', year:'2025', title:'Hon. Judge — Tongue Twister Competition', org:'Hooghly Chapter of EIRC of ICSI · Mega Student Carnival' },
+  { image:'/images/award-02-pcs-day.png', year:'2025', title:'PCS Day Recognition', org:'Hosted by EIRC of ICSI' },
+  { image:'/images/award-03-mega-student-conference.png', year:'2023', title:"Mega Student's Conference", org:'ICSI · Presented to CS Arisankala Manish Kumar' },
+  { image:'/images/award-04-hooghly-chapter.png', year:'Professional engagement', title:'Hooghly Chapter Recognition', org:'ICSI · Hooghly Chapter' },
+  { image:'/images/award-05-posh-session.png', year:'2026', title:'Professional Knowledge Session', org:'Madhya Kolkata Study Circle for Members of ICSI-EIRC · POSH' },
+  { image:'/images/award-06-adapting-mca-v3.png', year:'2025', title:'Adapting to MCA V3', org:'ICMAI Howrah Chapter · ROC Transition & Compliance Challenges' },
+  { image:'/images/award-07-gst-input-tax-credit.png', year:'2026', title:'Input Tax Credit under GST', org:'ICMAI Howrah Chapter · Eligibility, Restrictions, Reversal & Judicial Trends' },
+  { image:'/images/award-08-gst-rate-cuts.png', year:'2025', title:'Impact of GST Rate Cuts', org:'ICMAI Howrah Chapter · Insights from the 56th GST Council Meeting' },
+  { image:'/images/award-09-mca-v3-solutions.png', year:'Professional engagement', title:'MCA-V3 Portal: Common Errors & Practical Solutions', org:'ICMAI Howrah Chapter' },
+  { image:'/images/award-10-hooghly-chapter-gratitude.png', year:'2024', title:'Knowledge-Sharing Recognition', org:'Hooghly Chapter of ICSI · Full Day Seminar' },
+  { image:'/images/award-11-bhawanipur-education-appreciation.png', year:'Professional engagement', title:'Appreciation for Support in Education', org:'The Bhawanipur Education Society College' },
+  { image:'/images/award-12-moot-court-competition.png', year:'2026', title:'24th All India Moot Court Competition', org:'Chapter Level — Kolkata · ICSI-EIRC, CCGR&T Kolkata Campus' },
+  { image:'/images/award-13-regional-conference.png', year:'2017', title:'9th Regional Conference of Student Company Secretaries', org:'ICSI-EIRC jointly with Hooghly Chapter · Synergy — Unleash Your Potential' },
+  { image:'/images/award-14-3rd-best-participant.png', year:'2016', title:'3rd Best Participant — 112th MSOP', org:'ICSI-EIRC · Management Skills Orientation Programme · Kolkata' },
 ];
 
 export default function Awards(){
