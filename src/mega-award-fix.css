@@ -1,0 +1,30 @@
+/* Mega Student's Conference recognition asset: preserve the source proportions and give the narrow trophy artwork enough visual weight without stretching it. */
+.home-recognition-card:nth-child(5) .home-recognition-image img,
+.home-recognition-card:nth-child(11) .home-recognition-image img,
+.marquee-card:nth-child(3) .marquee-image img,
+.marquee-card:nth-child(17) .marquee-image img,
+.gallery-card:nth-child(3) .gallery-media img,
+.award-card:nth-child(3) .award-media img {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: scale(1.18) !important;
+  transform-origin: center center !important;
+}
+
+/* Do not apply the generic gallery zoom to this recognition. */
+.gallery-card:nth-child(3) .gallery-media img,
+.award-card:nth-child(3) .award-media img {
+  transform: scale(1.18) !important;
+}
+
+@media (max-width: 700px) {
+  .home-recognition-card:nth-child(5) .home-recognition-image img,
+  .home-recognition-card:nth-child(11) .home-recognition-image img,
+  .marquee-card:nth-child(3) .marquee-image img,
+  .marquee-card:nth-child(17) .marquee-image img {
+    transform: scale(1.12) !important;
+  }
+}
