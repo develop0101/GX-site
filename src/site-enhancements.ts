@@ -4,9 +4,7 @@ const HERO_IMAGE = '/images/CS%20manish%20website.png';
 
 function redirectRetiredRoutes() {
   if (window.location.pathname === '/engagements' || window.location.pathname === '/awards') {
-    window.history.replaceState({}, '', '/gallery');
-    window.dispatchEvent(new PopStateEvent('popstate'));
-    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    window.location.replace('/gallery');
   }
 }
 
@@ -33,7 +31,6 @@ function replaceNavigation() {
     link.textContent = 'Galleries';
     nav.insertBefore(link, nav.querySelector('a[href="/connect"]') || null);
   }
-
   document.querySelectorAll<HTMLAnchorElement>('.mobile-nav a[href="/engagements"], .mobile-nav a[href="/awards"]').forEach(a => a.remove());
   const mobile = document.querySelector('.mobile-nav');
   if (mobile && !mobile.querySelector('a[href="/gallery"]')) {
@@ -42,7 +39,6 @@ function replaceNavigation() {
     link.textContent = 'Galleries';
     mobile.insertBefore(link, mobile.querySelector('a[href="/connect"]') || null);
   }
-
   document.querySelectorAll<HTMLAnchorElement>('.footer-links a[href="/engagements"], .footer-links a[href="/awards"]').forEach(a => {
     a.href = '/gallery';
     a.textContent = 'Galleries';
@@ -85,7 +81,8 @@ function addLayoutFixes() {
     .hero-footer .scroll-hint{white-space:nowrap!important;display:inline-flex!important;align-items:center!important;gap:7px!important}
     .hero-copy .arrow-link{position:relative!important;z-index:6!important;margin-bottom:24px!important}
     .hero-grid{padding-bottom:0!important}
-    .layer-identity{padding-top:140px!important}
+    .layer-identity{padding-top:150px!important}
+    .site-header{z-index:100!important}
     .connect-linkedin{margin-top:14px!important;display:grid!important;grid-template-columns:28px 1fr 20px!important;align-items:center!important;gap:12px!important;padding:16px 0!important;border-top:1px solid rgba(16,42,67,.12)!important;color:#102a43!important;text-decoration:none!important}
     .connect-linkedin .linkedin-mark{width:24px!important;height:24px!important;border-radius:3px!important}
     .connect-linkedin strong{display:block!important;font-size:14px!important}
