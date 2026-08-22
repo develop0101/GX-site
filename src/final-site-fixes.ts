@@ -5,7 +5,7 @@ const WHATSAPP_URL = 'https://wa.me/916291109642';
 function fixHeroEyebrow(){
   document.querySelectorAll('.hero-copy .eyebrow').forEach(el=>{
     if(el.textContent?.includes('Professional profile') || el.textContent?.includes('Upcoming candidate')){
-      el.textContent='Company Secretary · Professional Leadership · Institutional Development';
+      el.textContent='Professional Journey · Vision · Future-Ready Leadership';
     }
   });
 }
